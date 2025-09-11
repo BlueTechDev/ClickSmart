@@ -76,6 +76,15 @@ body {
 a { color: var(--accent); text-decoration: none; }
 a:hover { text-decoration: underline; }
 
+/* Accessibility: skip link */
+.skip-link {
+  position: absolute; left: -10000px; top: auto; width: 1px; height: 1px; overflow: hidden;
+}
+.skip-link:focus {
+  left: 10px; top: 10px; width: auto; height: auto; padding: 8px 10px;
+  background: var(--panel); border: 1px solid var(--border); border-radius: 8px; z-index: 1000;
+}
+
 .container {
   width: min(1100px, 94%);
   margin: 0 auto;
@@ -113,6 +122,9 @@ a:hover { text-decoration: underline; }
               0 6px 30px rgba(0,0,0,0.08);
 }
 .tab:hover { text-decoration: none; border-color: color-mix(in oklab, var(--border) 60%, var(--text)); }
+
+.ml-auto { margin-left: auto; }
+.controls { display: inline-flex; gap: 8px; }
 
 section { margin: 28px 0 0; }
 section h2 { margin: 0 0 12px; font-size: clamp(22px, 3.3vw, 28px); }
@@ -153,6 +165,7 @@ summary::-webkit-details-marker { display: none; }
 
 .callout { border: 1px dashed color-mix(in oklab, var(--border) 70%, var(--text) 0%); border-radius: 12px; padding: 12px; color: var(--muted); }
 .small { font-size: 13px; color: var(--muted); }
+.mt-10 { margin-top: 10px; }
 
 footer { color: var(--muted); border-top: 1px solid var(--border); margin-top: 28px; padding-top: 18px; font-size: 14px; }
 .global-footer { text-align: center; }

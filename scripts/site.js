@@ -102,3 +102,20 @@
     });
   }
 })();
+
+// Text size controls (A− / A+)
+(function initTextZoom() {
+  const KEY = 'font-size-pct';
+  const html = document.documentElement;
+  const dec = document.getElementById('font-dec');
+  const inc = document.getElementById('font-inc');
+  function apply(pct) {
+    html.style.fontSize = pct + '%';
+  }
+  function clamp(n) { return Math.max(85, Math.min(140, n)); }
+  function stored() { const v = parseInt(localStorage.getItem(KEY) || '100', 10); return clamp(isNaN(v) ? 100 : v); }
+  let size = stored();
+  apply(size);
+  dec?.addEventListener('click', () => { size = clamp(size - 10); localStorage.setItem(KEY, String(size)); apply(size); });
+  inc?.addEventListener('click', () => { size = clamp(size + 10); localStorage.setItem(KEY, String(size)); apply(size); });
+})();
