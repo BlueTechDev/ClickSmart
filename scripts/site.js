@@ -174,3 +174,39 @@
     }
   });
 })();
+
+// Collapse long grids on mobile with Show all / Show less
+(function initMobileCollapsers() {
+  const isMobile = () => window.matchMedia && window.matchMedia('(max-width: 719px)').matches;
+  const sections = Array.from(document.querySelectorAll('section[data-collapse]'));
+  function apply() {
+    sections.forEach(sec => {
+      const grid = sec.querySelector('.grid');
+      const btn = sec.querySelector('[data-collapse-toggle]');
+      if (!grid || !btn) return;
+      if (isMobile()) {
+        grid.classList.add('collapse-on-mobile');
+        btn.hidden = false;
+        btn.setAttribute('aria-expanded', 'false');
+        btn.textContent = 'Show all';
+        btn.onclick = () => {
+          const expanded = btn.getAttribute('aria-expanded') === 'true';
+          if (expanded) {
+            grid.classList.add('collapse-on-mobile');
+            btn.setAttribute('aria-expanded', 'false');
+            btn.textContent = 'Show all';
+          } else {
+            grid.classList.remove('collapse-on-mobile');
+            btn.setAttribute('aria-expanded', 'true');
+            btn.textContent = 'Show less';
+          }
+        };
+      } else {
+        grid.classList.remove('collapse-on-mobile');
+        btn.hidden = true;
+      }
+    });
+  }
+  apply();
+  window.addEventListener('resize', () => { apply(); });
+})();

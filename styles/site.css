@@ -166,6 +166,8 @@ summary::-webkit-details-marker { display: none; }
 .callout { border: 1px dashed color-mix(in oklab, var(--border) 70%, var(--text) 0%); border-radius: 12px; padding: 12px; color: var(--muted); }
 .small { font-size: 13px; color: var(--muted); }
 .mt-10 { margin-top: 10px; }
+.section-actions { margin-top: 10px; display: flex; justify-content: center; }
+.show-more { font-size: 14px; }
 
 footer { color: var(--muted); border-top: 1px solid var(--border); margin-top: 28px; padding-top: 18px; font-size: 14px; }
 .global-footer { text-align: center; }
@@ -223,6 +225,13 @@ footer { color: var(--muted); border-top: 1px solid var(--border); margin-top: 2
 }
 @media (min-width: 980px) {
   .carousel-card { flex-basis: 48%; }
+}
+
+/* Mobile stress reduction: collapse long grids */
+@media (max-width: 719px) {
+  section[data-collapse] .grid { position: relative; }
+  section[data-collapse] .grid.collapse-on-mobile > *:nth-child(n+3) { display: none; }
+  section[data-collapse] .section-actions { display: flex; }
 }
 
 /* Modal */
