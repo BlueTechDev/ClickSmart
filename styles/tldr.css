@@ -1,0 +1,103 @@
+/* TL;DR page styles using provided palette with light/dark support */
+:root {
+  --p0: #000000;   /* black */
+  --p1: #4f76a4;   /* steel blue */
+  --p2: #7fa3cc;   /* light slate blue */
+  --p3: #ffe6d6;   /* soft peach */
+
+  /* Light defaults */
+  --bg-grad: linear-gradient(180deg, var(--p3) 0%, var(--p2) 60%);
+  --text: #0b1321;
+  --muted: #2b3a55;
+  --card: #ffffff;
+  --border: rgba(0,0,0,0.1);
+  --link: var(--p1);
+  --accent: var(--p1);
+}
+
+html[data-theme="dark"] {
+  --bg-grad: linear-gradient(180deg, var(--p0) 0%, color-mix(in oklab, var(--p1) 40%, #000 60%) 70%);
+  --text: #e7ebf3;
+  --muted: #a9b6c8;
+  --card: color-mix(in oklab, var(--p0) 82%, #ffffff 18%);
+  --border: color-mix(in oklab, var(--p0) 70%, #ffffff 30%);
+  --link: var(--p2);
+  --accent: var(--p2);
+}
+
+@media (prefers-color-scheme: dark) {
+  html:not([data-theme="light"]) {
+    --bg-grad: linear-gradient(180deg, var(--p0) 0%, color-mix(in oklab, var(--p1) 40%, #000 60%) 70%);
+    --text: #e7ebf3;
+    --muted: #a9b6c8;
+    --card: color-mix(in oklab, var(--p0) 82%, #ffffff 18%);
+    --border: color-mix(in oklab, var(--p0) 70%, #ffffff 30%);
+    --link: var(--p2);
+    --accent: var(--p2);
+  }
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Arial; color: var(--text); background: var(--bg-grad); }
+
+.container { width: min(1000px, 92%); margin: 0 auto; }
+.row { display: flex; align-items: center; gap: 12px; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0; }
+.muted { color: var(--muted); }
+.hidden { display: none; }
+
+/* Header */
+.site-header { background: var(--p0); color: #fff; border-bottom: 3px solid var(--p1); }
+.site-header .container { padding: 12px 0; }
+.title { margin: 0; font-size: clamp(18px, 3.8vw, 24px); flex: 1; }
+.back-btn { color: var(--p3); text-decoration: none; border: 1px solid rgba(255,255,255,0.2); padding: 6px 10px; border-radius: 8px; background: transparent; cursor: pointer; }
+.back-btn:hover { background: rgba(255,255,255,0.08); }
+
+/* Hamburger */
+.hamburger { display: inline-flex; flex-direction: column; gap: 4px; padding: 8px; background: transparent; border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; cursor: pointer; }
+.hamburger span { width: 22px; height: 2px; background: #fff; display: block; }
+
+/* Menu */
+.menu { display: none; background: var(--p1); border-bottom: 2px solid rgba(0,0,0,0.15); }
+.menu a { color: #fff; text-decoration: none; display: inline-block; padding: 10px 14px; }
+.menu a:hover { background: color-mix(in oklab, var(--p1) 80%, #000 20%); }
+.menu.open { display: block; }
+
+/* Intro */
+.intro { padding: 18px 0 8px; }
+.actions { display: flex; align-items: center; gap: 12px; margin-top: 8px; }
+.btn { background: var(--p1); color: #fff; border: none; border-radius: 8px; padding: 8px 12px; cursor: pointer; box-shadow: 0 4px 14px rgba(0,0,0,0.15); }
+.btn:hover { filter: brightness(0.95); }
+.btn.sm { padding: 6px 10px; font-size: 13px; }
+
+/* Cards */
+.cards { list-style: none; padding-left: 0; margin: 0; display: grid; grid-template-columns: 1fr; gap: 12px; }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 14px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
+.card h3 { margin: 0 0 6px; font-size: 18px; }
+.card a { color: var(--link); text-decoration: none; }
+.card a:hover { text-decoration: underline; }
+.card .meta { color: var(--muted); font-size: 12px; }
+.card .source { color: var(--accent); font-weight: 600; font-size: 12px; }
+.card-actions { display: flex; gap: 8px; margin-top: 8px; }
+.blurb { margin: 6px 0; }
+.blurb.full { display: none; }
+.blurb.open.full { display: block; }
+.blurb.open.short { display: none; }
+
+/* Fallback */
+.fallback { background: rgba(255,255,255,0.6); border: 1px dashed var(--p1); border-radius: 12px; padding: 12px; margin-top: 12px; }
+
+/* Footer */
+.footer { padding: 18px 0 24px; }
+
+/* Responsive */
+@media (min-width: 720px) {
+  .menu { display: flex; gap: 6px; justify-content: center; }
+  .hamburger { display: none; }
+  .cards { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 1024px) {
+  .cards { grid-template-columns: repeat(3, 1fr); }
+}

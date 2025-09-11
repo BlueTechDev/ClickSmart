@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <title>Click Smart — Tech News, Tips, and Training</title>
+    <meta name="description" content="A simple hub for staying safe online: tech news, troubleshooting tips, scams to watch for, and training videos." />
+    <link rel="stylesheet" href="styles/site.css" />
+  </head>
+  <body>
+    <a href="#main" class="small" style="position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden;">Skip to content</a>
+
+    <div class="container">
+      <header class="hero" aria-label="Stay Safe Online">
+        <h1>Stay Safe Online</h1>
+        <p>Your hub for trusted tech news, quick troubleshooting, common threats, and hands-on training.</p>
+      </header>
+    </div>
+
+    <nav class="nav" aria-label="Section navigation">
+      <div class="inner">
+        <button id="menu-btn" class="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="site-menu">
+          <span></span><span></span><span></span>
+        </button>
+        <div id="site-menu" class="links">
+          <a class="tab" href="#tech-news">📰 Tech News</a>
+          <a class="tab" href="tldr.html">🧠 TL;DR</a>
+          <a class="tab" href="#troubleshooting">🛠️ Troubleshooting Tips</a>
+          <a class="tab" href="#watch-out">⚠️ Watch Out</a>
+          <a class="tab" href="#train-me">🎓 Train Me</a>
+        </div>
+        <button id="theme-toggle" class="tab" style="margin-left:auto" aria-label="Toggle color theme" title="Toggle color theme">🌙 Dark</button>
+      </div>
+    </nav>
+
+    <main id="main" class="container" tabindex="-1">
+      <section id="tech-news" aria-labelledby="tech-news-title">
+        <h2 id="tech-news-title">📰 Tech News (Default Sources)</h2>
+        <p class="lead">Curated tech news from reputable publications. Prefer original reporting and vendor posts for accuracy.</p>
+        <div class="grid" role="list">
+          <article class="card" role="listitem">
+            <h3>IT Brew</h3>
+            <p class="meta">IT strategy, infrastructure, and enterprise tech news.</p>
+            <p><a href="https://www.itbrew.com/" target="_blank" rel="noopener noreferrer">Open IT Brew ↗</a></p>
+          </article>
+          <article class="card" role="listitem">
+            <h3>The Download (MIT Tech Review)</h3>
+            <p class="meta">Daily briefing on what matters in tech.</p>
+            <p><a href="https://www.technologyreview.com/the-download/" target="_blank" rel="noopener noreferrer">Open The Download ↗</a></p>
+          </article>
+          <article class="card" role="listitem">
+            <h3>Wired</h3>
+            <p class="meta">In‑depth reporting on technology, business, and culture.</p>
+            <p><a href="https://www.wired.com/" target="_blank" rel="noopener noreferrer">Open Wired ↗</a></p>
+          </article>
+          <article class="card" role="listitem">
+            <h3>TechCrunch</h3>
+            <p class="meta">Startup and product news, funding, and analysis.</p>
+            <p><a href="https://techcrunch.com/" target="_blank" rel="noopener noreferrer">Open TechCrunch ↗</a></p>
+          </article>
+        </div>
+        <p class="small" style="margin-top:10px;">Tip: Watch for sponsored posts and verify claims via multiple sources.</p>
+      </section>
+
+      <section id="troubleshooting" aria-labelledby="troubleshooting-title">
+        <h2 id="troubleshooting-title">🛠️ Quick Troubleshooting Tips</h2>
+        <p class="lead">Common fixes for everyday issues. If something feels off, stop and verify before proceeding.</p>
+
+        <details>
+          <summary>My computer is suddenly slow or hot</summary>
+          <ul>
+            <li>Close tabs/apps you don’t need and restart the device.</li>
+            <li>Run a full malware scan with your security software.</li>
+            <li>Check <em>Task Manager/Activity Monitor</em> for unknown apps using high CPU.</li>
+            <li>Update OS and apps; patches often include performance and security fixes.</li>
+          </ul>
+        </details>
+        <details>
+          <summary>I clicked a suspicious link</summary>
+          <ul>
+            <li>Disconnect from Wi‑Fi if the page looked malicious; don’t enter any passwords.</li>
+            <li>Run a malware scan and clear your browser cache/history.</li>
+            <li>Change passwords for affected accounts and enable 2‑factor authentication.</li>
+            <li>Watch for unexpected password reset emails or new login alerts.</li>
+          </ul>
+        </details>
+        <details>
+          <summary>My account might be compromised</summary>
+          <ul>
+            <li>Immediately reset the password to a strong, unique one.</li>
+            <li>Review account activity and revoke unknown sessions/devices.</li>
+            <li>Turn on multi‑factor authentication (prefer an authenticator app over SMS).</li>
+            <li>Update recovery email/phone and remove outdated ones.</li>
+          </ul>
+        </details>
+        <details>
+          <summary>Wi‑Fi is unreliable or unknown devices are connected</summary>
+          <ul>
+            <li>Reboot the modem/router; update firmware from the vendor site.</li>
+            <li>Change the Wi‑Fi password and admin password; disable WPS.</li>
+            <li>Use WPA2/WPA3, and split smart‑home devices onto a guest network.</li>
+            <li>Rename SSID to something generic; avoid personal info in the name.</li>
+          </ul>
+        </details>
+      </section>
+
+      <section id="watch-out" aria-labelledby="watch-out-title">
+        <h2 id="watch-out-title">⚠️ Things to Watch Out For</h2>
+        <p class="lead">Recognize common scams and risky patterns. When in doubt, pause and verify via official channels.</p>
+
+        <div class="grid">
+          <div class="card">
+            <h3>Phishing Emails & Texts</h3>
+            <p class="meta">“Your account is locked” or “Unusual sign‑in detected.”</p>
+            <p><span class="pill bad">Red flag</span> Urgent tone + links to sign in.</p>
+            <p><span class="pill good">Do</span> Go to the site directly; don’t use message links.</p>
+          </div>
+          <div class="card">
+            <h3>MFA Fatigue Attacks</h3>
+            <p class="meta">Repeated push notifications asking you to approve a login.</p>
+            <p><span class="pill bad">Red flag</span> Approvals you didn’t initiate.</p>
+            <p><span class="pill good">Do</span> Deny and change password; switch to code‑based MFA.</p>
+          </div>
+          <div class="card">
+            <h3>Tech Support Scams</h3>
+            <p class="meta">Pop‑ups “from Microsoft/Apple” asking you to call a number.</p>
+            <p><span class="pill bad">Red flag</span> Requests for remote access or gift cards.</p>
+            <p><span class="pill good">Do</span> Close the tab; contact support via the official site.</p>
+          </div>
+          <div class="card">
+            <h3>Fake Invoices & Job Offers</h3>
+            <p class="meta">Attachments requiring payment or “urgent onboarding” forms.</p>
+            <p><span class="pill warn">Check</span> Sender domain and request via a known channel.</p>
+            <p><span class="pill good">Do</span> Verify with the company’s website or HR before acting.</p>
+          </div>
+          <div class="card">
+            <h3>QR Code & Link Shorteners</h3>
+            <p class="meta">Codes posted in public or shortened links in messages.</p>
+            <p><span class="pill bad">Red flag</span> Unexpected payment or login prompts.</p>
+            <p><span class="pill good">Do</span> Preview destination; use your camera’s link preview feature.</p>
+          </div>
+          <div class="card">
+            <h3>Crypto & Investment Promises</h3>
+            <p class="meta">Guaranteed returns, celebrity endorsements, or urgent timelines.</p>
+            <p><span class="pill bad">Red flag</span> Pressure to move money quickly to new accounts.</p>
+            <p><span class="pill good">Do</span> Stop and consult a trusted person or advisor.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="train-me" aria-labelledby="train-me-title">
+        <h2 id="train-me-title">🎓 Train Me (Video Walkthroughs)</h2>
+        <p class="lead">Use the Add/Change buttons to paste a YouTube link (or embed URL). The player will update automatically.</p>
+
+        <div class="video-grid">
+          <div class="video-card" data-title="Create Strong Passwords">
+            <iframe class="video-frame" title="Create Strong Passwords" src="" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+            <div class="video-body">
+              <h3 class="video-title">Create Strong Passwords</h3>
+              <div class="video-actions">
+                <button class="btn" data-action="set-video">Add/Change Video</button>
+                <button class="btn" data-action="clear-video">Clear</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="video-card" data-title="Turn On Two‑Factor Authentication">
+            <iframe class="video-frame" title="Turn On Two‑Factor Authentication" src="" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+            <div class="video-body">
+              <h3 class="video-title">Turn On Two‑Factor Authentication</h3>
+              <div class="video-actions">
+                <button class="btn" data-action="set-video">Add/Change Video</button>
+                <button class="btn" data-action="clear-video">Clear</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="video-card" data-title="Spot a Phishing Email">
+            <iframe class="video-frame" title="Spot a Phishing Email" src="" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+            <div class="video-body">
+              <h3 class="video-title">Spot a Phishing Email</h3>
+              <div class="video-actions">
+                <button class="btn" data-action="set-video">Add/Change Video</button>
+                <button class="btn" data-action="clear-video">Clear</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <p class="callout" style="margin-top:12px;">
+          <!--Tip: You can paste a normal YouTube link like--> <span class="small">https://www.youtube.com/watch?v=VIDEO_ID</span> or an embed link like <span class="small">https://www.youtube.com/embed/VIDEO_ID</span>. This page converts it for the player.
+        </p>
+      </section>
+
+      <footer aria-label="Footer" class="global-footer">
+        <div>Created by Jona Krolll © 2025. My mission: to keep you and your families safe.</div>
+        <div class="small">Last updated: <span id="last-updated">—</span></div>
+      </footer>
+    </main>
+
+    <script src="scripts/site.js"></script>
+  </body>
+  </html>

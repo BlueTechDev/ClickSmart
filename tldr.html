@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>TL;DR — Top 5 Tech News Today</title>
+    <meta name="description" content="Quick daily TL;DR: top 5 tech news items from trusted sources." />
+    <link rel="stylesheet" href="styles/tldr.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container row">
+        <button id="menu-btn" class="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="site-menu">
+          <span></span><span></span><span></span>
+        </button>
+        <h1 class="title">TL;DR — Top 5 Tech News</h1>
+        <a class="back-btn" href="Tech_News.html" title="Back to Safety Hub">← Back to Hub</a>
+        <button id="theme-toggle" class="back-btn" aria-label="Toggle color theme" title="Toggle color theme">🌙 Dark</button>
+      </div>
+      <nav id="site-menu" class="menu" aria-label="Primary">
+        <a href="Tech_News.html#tech-news">Tech News</a>
+        <a href="Tech_News.html#troubleshooting">Troubleshooting</a>
+        <a href="Tech_News.html#watch-out">Watch Out</a>
+        <a href="Tech_News.html#train-me">Train Me</a>
+      </nav>
+    </header>
+
+    <main class="container">
+      <section aria-labelledby="intro-title" class="intro">
+        <h2 id="intro-title">Today’s Top 5</h2>
+        <p class="muted">Pulled from your default sources. Times and availability depend on each site’s feeds and browser CORS policy.</p>
+        <div class="actions">
+          <button id="refresh" class="btn">Refresh</button>
+          <span id="last-run" class="muted"></span>
+        </div>
+      </section>
+
+      <section aria-labelledby="list-title">
+        <h2 id="list-title" class="sr-only">News List</h2>
+        <ul id="tldr-list" class="cards" aria-live="polite" aria-busy="true"></ul>
+        <div id="fallback" class="fallback hidden">
+          <p>Couldn’t load feeds automatically. Check these sources:</p>
+          <ul>
+            <li><a href="https://www.itbrew.com/" target="_blank" rel="noopener noreferrer">IT Brew</a></li>
+            <li><a href="https://www.technologyreview.com/the-download/" target="_blank" rel="noopener noreferrer">The Download (MIT Tech Review)</a></li>
+            <li><a href="https://www.wired.com/" target="_blank" rel="noopener noreferrer">Wired</a></li>
+            <li><a href="https://techcrunch.com/" target="_blank" rel="noopener noreferrer">TechCrunch</a></li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <footer class="container footer">
+      <div class="footer-text">Created by Jona Krolll © 2025. My mission: to keep you and your families safe.</div>
+    </footer>
+
+    <script src="scripts/tldr.js"></script>
+  </body>
+  </html>
