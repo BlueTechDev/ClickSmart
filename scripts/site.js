@@ -30,47 +30,40 @@
   });
 })();
 
-// Simple helper to convert YouTube URLs to embed URLs
-function toYouTubeEmbed(url) {
-  if (!url) return '';
-  try {
-    const u = new URL(url);
-    // youtu.be/VIDEO
-    if (u.hostname.includes('youtu.be')) {
-      return `https://www.youtube.com/embed/${u.pathname.replace('/', '')}`;
-    }
-    // youtube.com/watch?v=VIDEO or /shorts/VIDEO or already /embed/VIDEO
-    if (u.hostname.includes('youtube.com')) {
-      const id = u.searchParams.get('v');
-      if (id) return `https://www.youtube.com/embed/${id}`;
-      const parts = u.pathname.split('/').filter(Boolean);
-      if (parts[0] === 'shorts' && parts[1]) return `https://www.youtube.com/embed/${parts[1]}`;
-      if (parts[0] === 'embed' && parts[1]) return `https://www.youtube.com/embed/${parts[1]}`;
-    }
-    // Otherwise, return as-is; iframe may still handle it
-    return url;
-  } catch {
-    return url;
-  }
-}
+// Carousel: preset cards, no user editing
+(function initCarousel() {
+  const carousel = document.querySelector('.carousel');
+  if (!carousel) return;
+  const viewport = carousel.querySelector('.carousel-viewport');
+  const track = carousel.querySelector('.carousel-track');
+  const cards = Array.from(track.querySelectorAll('.carousel-card'));
+  const prev = carousel.querySelector('.carousel-nav.prev');
+  const next = carousel.querySelector('.carousel-nav.next');
 
-// Wire up Add/Change and Clear buttons for videos
-(function initVideoCards() {
-  document.querySelectorAll('.video-card').forEach(card => {
-    const title = card.dataset.title || 'Training Video';
-    const frame = card.querySelector('iframe');
-    card.addEventListener('click', (e) => {
-      const btn = e.target.closest('button[data-action]');
-      if (!btn) return;
-      const action = btn.getAttribute('data-action');
-      if (action === 'set-video') {
-        const input = prompt(`Paste a YouTube link for: ${title}`);
-        if (input) frame.src = toYouTubeEmbed(input.trim());
-      } else if (action === 'clear-video') {
-        frame.src = '';
+  // Scroll snapping for smooth UX; use buttons to page by viewport
+  function page(dir) {
+    viewport.scrollBy({ left: dir * viewport.clientWidth, behavior: 'smooth' });
+  }
+  prev?.addEventListener('click', () => page(-1));
+  next?.addEventListener('click', () => page(1));
+
+  // Lazy-load iframes from data-embed when card is near view
+  const io = ('IntersectionObserver' in window) ? new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const card = e.target;
+        const src = card.getAttribute('data-embed') || '';
+        const frame = card.querySelector('iframe');
+        const placeholder = card.querySelector('.video-placeholder');
+        if (src && frame && !frame.src) {
+          frame.src = src;
+          placeholder?.classList.add('hidden');
+        }
       }
     });
-  });
+  }, { root: viewport, threshold: 0.4 }) : null;
+
+  cards.forEach(c => io?.observe(c));
 })();
 
 // Theme toggle (light/dark with persistence)
