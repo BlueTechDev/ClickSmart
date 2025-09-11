@@ -36,6 +36,7 @@
           <button id="font-dec" class="tab" aria-label="Decrease text size" title="Decrease text size">A−</button>
           <button id="font-inc" class="tab" aria-label="Increase text size" title="Increase text size">A+</button>
           <button id="theme-toggle" class="tab" aria-label="Toggle color theme" title="Toggle color theme">🌙 Dark</button>
+          <button id="contact-open" class="tab" aria-label="Contact" title="Ask a Question">Contact</button>
         </div>
       </div>
     </nav>
@@ -184,6 +185,15 @@
             <p><span class="pill bad">Red flag</span> Pressure to move money quickly to new accounts.</p>
             <p><span class="pill good">Do</span> Stop and consult a trusted person or advisor.</p>
           </div>
+          <div class="card">
+            <h3>Report a Scam</h3>
+            <p class="meta">Report fraud to help others and assist investigators.</p>
+            <ul class="small">
+              <li><a href="https://reportfraud.ftc.gov/" target="_blank" rel="noopener noreferrer">FTC: reportfraud.ftc.gov</a></li>
+              <li><a href="https://www.ic3.gov/" target="_blank" rel="noopener noreferrer">FBI Internet Crime Complaint Center (IC3)</a></li>
+              <li><a href="https://www.usa.gov/state-attorney-general" target="_blank" rel="noopener noreferrer">Your State Attorney General</a></li>
+            </ul>
+          </div>
         </div>
       </section>
 
@@ -203,6 +213,7 @@
                 </div>
                 <div class="video-body">
                   <h3 class="video-title">Fix a Slow Computer</h3>
+                  <p class="meta">Simple checks to speed things up safely.</p>
                 </div>
               </li>
 
@@ -213,6 +224,7 @@
                 </div>
                 <div class="video-body">
                   <h3 class="video-title">Connect to Wi‑Fi (Computer)</h3>
+                  <p class="meta">Step‑by‑step Wi‑Fi connection and common fixes.</p>
                 </div>
               </li>
 
@@ -223,6 +235,7 @@
                 </div>
                 <div class="video-body">
                   <h3 class="video-title">Clear Browser Cache</h3>
+                  <p class="meta">Fix loading/login glitches by clearing cached files.</p>
                 </div>
               </li>
 
@@ -234,6 +247,7 @@
                 </div>
                 <div class="video-body">
                   <h3 class="video-title">Free Up Phone Storage</h3>
+                  <p class="meta">Find and remove large files, apps, and duplicates.</p>
                 </div>
               </li>
 
@@ -244,6 +258,7 @@
                 </div>
                 <div class="video-body">
                   <h3 class="video-title">Reduce Phone Battery Drain</h3>
+                  <p class="meta">Settings to extend battery life without losing features.</p>
                 </div>
               </li>
 
@@ -254,6 +269,7 @@
                 </div>
                 <div class="video-body">
                   <h3 class="video-title">Update Your Phone OS</h3>
+                  <p class="meta">Keep your phone secure with timely updates.</p>
                 </div>
               </li>
             </ul>
@@ -280,6 +296,26 @@
           <summary><strong>Backup</strong></summary>
           A copy of your important files so you can recover them if your device is lost, broken, or infected.
         </details>
+        <details>
+          <summary><strong>MFA vs. 2FA</strong></summary>
+          2FA uses two factors (password + code). MFA means two or more, like password + code + fingerprint. More factors = stronger security.
+        </details>
+        <details>
+          <summary><strong>VPN</strong></summary>
+          A Virtual Private Network encrypts internet traffic and can hide your IP from sites and Wi‑Fi providers. Use trusted providers only.
+        </details>
+        <details>
+          <summary><strong>Cloud</strong></summary>
+          Files or services running on someone else’s computers (“servers”) on the internet, accessible from your devices.
+        </details>
+        <details>
+          <summary><strong>Cache</strong></summary>
+          Temporary storage used by apps/browsers to speed things up. Clearing it can fix loading or login issues.
+        </details>
+        <details>
+          <summary><strong>Cookies</strong></summary>
+          Small files a website saves in your browser to keep you logged in or remember settings. Can also be used for tracking.
+        </details>
       </section>
 
       <footer aria-label="Footer" class="global-footer">
@@ -287,6 +323,29 @@
         <div class="small">Last updated: <span id="last-updated">—</span></div>
       </footer>
     </main>
+
+    <!-- Contact Modal -->
+    <div id="contact-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="contact-title" hidden>
+      <div class="modal-backdrop" data-close></div>
+      <div class="modal-content" role="document">
+        <button class="modal-close" aria-label="Close" data-close>×</button>
+        <h2 id="contact-title">Ask a Question</h2>
+        <p class="small">We’ll get back to you at the reply‑to address from your message if provided; otherwise we’ll respond with general guidance.</p>
+        <form id="contact-form" novalidate>
+          <label class="form-label" for="cf-name">Your Name</label>
+          <input id="cf-name" name="name" class="form-input" type="text" inputmode="text" autocomplete="name" maxlength="80" required>
+
+          <label class="form-label" for="cf-msg">Your Question</label>
+          <textarea id="cf-msg" name="message" class="form-textarea" rows="6" maxlength="2000" required></textarea>
+
+          <div class="form-actions">
+            <button id="cf-submit" class="btn" type="submit">Send</button>
+            <button class="btn" type="button" data-close>Cancel</button>
+          </div>
+          <p id="cf-status" class="small" aria-live="polite"></p>
+        </form>
+      </div>
+    </div>
 
     <script src="scripts/site.js"></script>
   </body>
