@@ -70,6 +70,7 @@ body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubunt
 .btn { background: var(--p1); color: #fff; border: none; border-radius: 8px; padding: 8px 12px; cursor: pointer; box-shadow: 0 4px 14px rgba(0,0,0,0.15); }
 .btn:hover { filter: brightness(0.95); }
 .btn.sm { padding: 6px 10px; font-size: 13px; }
+.section-actions { display: flex; justify-content: center; }
 
 /* Cards */
 .cards { list-style: none; padding-left: 0; margin: 0; display: grid; grid-template-columns: 1fr; gap: 12px; }
@@ -121,3 +122,14 @@ body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubunt
 }
 .form-input:focus, .form-textarea:focus { outline: 2px solid color-mix(in oklab, var(--accent) 45%, transparent); outline-offset: 2px; }
 .form-actions { display: flex; gap: 8px; margin-top: 12px; }
+
+/* Mobile collapse + sticky title */
+@media (max-width: 719px) {
+  #tldr-list.collapse-on-mobile > li:nth-child(n+4) { display: none; }
+  main .intro h2 {
+    position: sticky; top: 8px; z-index: 4;
+    background: color-mix(in oklab, var(--card) 92%, transparent);
+    backdrop-filter: blur(4px);
+    border: 1px solid var(--border); border-radius: 8px; padding: 6px 8px; margin: 0 -4px 8px;
+  }
+}

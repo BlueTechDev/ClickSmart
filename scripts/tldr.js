@@ -294,3 +294,36 @@ function matchesKeywords(item) {
     }
   });
 })();
+
+// Mobile collapse for TL;DR list
+(function initTldrCollapse() {
+  const list = document.getElementById('tldr-list');
+  const btn = document.getElementById('tldr-toggle');
+  if (!list || !btn) return;
+  const isMobile = () => window.matchMedia && window.matchMedia('(max-width: 719px)').matches;
+  function apply() {
+    if (isMobile()) {
+      list.classList.add('collapse-on-mobile');
+      btn.hidden = false;
+      btn.setAttribute('aria-expanded', 'false');
+      btn.textContent = 'Show all';
+      btn.onclick = () => {
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        if (expanded) {
+          list.classList.add('collapse-on-mobile');
+          btn.setAttribute('aria-expanded', 'false');
+          btn.textContent = 'Show all';
+        } else {
+          list.classList.remove('collapse-on-mobile');
+          btn.setAttribute('aria-expanded', 'true');
+          btn.textContent = 'Show less';
+        }
+      };
+    } else {
+      list.classList.remove('collapse-on-mobile');
+      btn.hidden = true;
+    }
+  }
+  apply();
+  window.addEventListener('resize', apply);
+})();
