@@ -253,3 +253,44 @@ function matchesKeywords(item) {
   const hay = `${item.title || ''} ${item.description || ''}`.toLowerCase();
   return KEYWORDS.some(k => hay.includes(k));
 }
+
+// Contact modal + submit
+(function initContact() {
+  const openBtn = document.getElementById('contact-open');
+  const modal = document.getElementById('contact-modal');
+  if (!openBtn || !modal) return;
+  const form = modal.querySelector('#contact-form');
+  const status = modal.querySelector('#cf-status');
+  const nameEl = modal.querySelector('#cf-name');
+  const msgEl = modal.querySelector('#cf-msg');
+  const submitBtn = modal.querySelector('#cf-submit');
+
+  function open() { modal.hidden = false; status.textContent = ''; nameEl?.focus(); }
+  function close() { modal.hidden = true; }
+
+  openBtn.addEventListener('click', open);
+  modal.addEventListener('click', (e) => { if (e.target.closest('[data-close]')) close(); });
+  window.addEventListener('keydown', (e) => { if (!modal.hidden && e.key === 'Escape') close(); });
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const name = (nameEl?.value || '').trim();
+    const message = (msgEl?.value || '').trim();
+    if (!name || !message) { status.textContent = 'Please enter your name and question.'; return; }
+    submitBtn.disabled = true;
+    status.textContent = 'Sending…';
+    try {
+      const r = await fetch('/api/contact', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ name, message }) });
+      if (r.status === 429) { status.textContent = 'Please wait a bit before sending another message.'; return; }
+      const data = await r.json().catch(() => ({}));
+      if (!r.ok) throw new Error('Request failed');
+      status.textContent = data.message || 'Thanks! We received your question.';
+      form.reset();
+      setTimeout(close, 900);
+    } catch (_) {
+      status.textContent = 'Could not send right now. Please try again later.';
+    } finally {
+      submitBtn.disabled = false;
+    }
+  });
+})();

@@ -101,3 +101,23 @@ body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubunt
 @media (min-width: 1024px) {
   .cards { grid-template-columns: repeat(3, 1fr); }
 }
+
+/* Modal (match main site) */
+.modal[hidden] { display: none; }
+.modal { position: fixed; inset: 0; z-index: 50; }
+.modal-backdrop { position: absolute; inset: 0; background: rgba(0,0,0,0.45); }
+.modal-content {
+  position: relative; z-index: 1; width: min(640px, 92%);
+  margin: 8vh auto 0; background: var(--card);
+  border: 1px solid var(--border); border-radius: 14px; padding: 16px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+}
+.modal-close { position: absolute; right: 10px; top: 8px; border: 1px solid var(--border); background: var(--card); border-radius: 8px; width: 32px; height: 32px; cursor: pointer; color: var(--text); }
+
+.form-label { display: block; margin-top: 10px; margin-bottom: 6px; font-weight: 600; }
+.form-input, .form-textarea {
+  width: 100%; background: var(--card); color: var(--text); border: 1px solid var(--border);
+  border-radius: 10px; padding: 10px; font: inherit;
+}
+.form-input:focus, .form-textarea:focus { outline: 2px solid color-mix(in oklab, var(--accent) 45%, transparent); outline-offset: 2px; }
+.form-actions { display: flex; gap: 8px; margin-top: 12px; }

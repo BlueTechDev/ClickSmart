@@ -158,8 +158,13 @@
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, message })
       });
+      if (r.status === 429) {
+        status.textContent = 'Please wait a bit before sending another message.';
+        return;
+      }
+      const data = await r.json().catch(() => ({}));
       if (!r.ok) throw new Error('Request failed');
-      status.textContent = 'Thanks! We received your question.';
+      status.textContent = data.message || 'Thanks! We received your question.';
       form.reset();
       setTimeout(close, 900);
     } catch (_) {

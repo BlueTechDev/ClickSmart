@@ -18,6 +18,7 @@
         <h1 class="title">Top 5 Tech News</h1>
         <a class="back-btn" href="Tech_News.html" title="Back to Safety Hub">← Back to Hub</a>
         <button id="theme-toggle" class="back-btn" aria-label="Toggle color theme" title="Toggle color theme">🌙 Dark</button>
+        <button id="contact-open" class="back-btn" aria-label="Contact" title="Ask a Question">Contact</button>
       </div>
       <nav id="site-menu" class="menu" aria-label="Primary">
         <a href="Tech_News.html#tech-news">Tech News</a>
@@ -55,6 +56,29 @@
     <footer class="container footer">
       <div class="footer-text">Created by Jona Krolll © 2025. My mission: to keep you and your families safe.</div>
     </footer>
+
+    <!-- Contact Modal -->
+    <div id="contact-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="contact-title" hidden>
+      <div class="modal-backdrop" data-close></div>
+      <div class="modal-content" role="document">
+        <button class="modal-close" aria-label="Close" data-close>×</button>
+        <h2 id="contact-title">Ask a Question</h2>
+        <p class="muted">We’ll get back to you with guidance.</p>
+        <form id="contact-form" novalidate>
+          <label class="form-label" for="cf-name">Your Name</label>
+          <input id="cf-name" name="name" class="form-input" type="text" inputmode="text" autocomplete="name" maxlength="80" required>
+
+          <label class="form-label" for="cf-msg">Your Question</label>
+          <textarea id="cf-msg" name="message" class="form-textarea" rows="6" maxlength="2000" required></textarea>
+
+          <div class="form-actions">
+            <button id="cf-submit" class="btn" type="submit">Send</button>
+            <button class="btn" type="button" data-close>Cancel</button>
+          </div>
+          <p id="cf-status" class="muted" aria-live="polite"></p>
+        </form>
+      </div>
+    </div>
 
     <script src="scripts/tldr.js"></script>
   </body>
