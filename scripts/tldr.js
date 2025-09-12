@@ -45,6 +45,21 @@
   });
 })();
 
+// Text size controls (A− / A+)
+(function initTextZoom() {
+  const KEY = 'font-size-pct';
+  const html = document.documentElement;
+  const dec = document.getElementById('font-dec');
+  const inc = document.getElementById('font-inc');
+  function apply(pct) { html.style.fontSize = pct + '%'; }
+  function clamp(n) { return Math.max(85, Math.min(140, n)); }
+  function stored() { const v = parseInt(localStorage.getItem(KEY) || '100', 10); return clamp(isNaN(v) ? 100 : v); }
+  let size = stored();
+  apply(size);
+  dec?.addEventListener('click', () => { size = clamp(size - 10); localStorage.setItem(KEY, String(size)); apply(size); });
+  inc?.addEventListener('click', () => { size = clamp(size + 10); localStorage.setItem(KEY, String(size)); apply(size); });
+})();
+
 // Feeds: using known RSS endpoints where available
 const FEEDS = [
   { name: 'IT Brew', home: 'https://www.itbrew.com/', rss: '' },
@@ -188,6 +203,7 @@ async function loadTopFive() {
   }
 
   renderTopFive(top, list, lastRun);
+  renderDigest(top);
 
   // Save to cache
   try { localStorage.setItem(CACHE_KEY, JSON.stringify({ ts: Date.now(), items: top })); } catch {}
@@ -278,6 +294,31 @@ function isTechItem(item) {
   return !hasExcluded;
 }
 
+// Render digest: top 3 bullets + generic action + links
+function renderDigest(allItems) {
+  try {
+    const top3 = (allItems || []).slice(0, 3);
+    const ul = document.getElementById('digest-top3');
+    const linksSpan = document.getElementById('digest-links');
+    const dateEl = document.getElementById('digest-date');
+    if (!ul || !linksSpan) return;
+    ul.innerHTML = '';
+    top3.forEach(i => {
+      const li = document.createElement('li');
+      const title = (i?.title || '').replace(/\s+/g, ' ').trim();
+      // Keep bullets short (<= 16 words)
+      const short = title.split(' ').slice(0, 16).join(' ');
+      li.textContent = short + (title.split(' ').length > 16 ? '…' : '');
+      ul.appendChild(li);
+    });
+    // Learn more: up to 2 source links
+    const unique = [];
+    top3.forEach(i => { if (i?.link && unique.length < 2 && !unique.find(u => u.href === i.link)) unique.push({ href: i.link, text: new URL(i.link).hostname.replace('www.', '') }); });
+    linksSpan.innerHTML = unique.map(u => `<a href="${u.href}" target="_blank" rel="noopener noreferrer">${u.text}</a>`).join(' • ');
+    if (dateEl) dateEl.textContent = new Date().toLocaleDateString(undefined, { year:'numeric', month:'long', day:'2-digit' });
+  } catch {}
+}
+
 // Contact modal + submit
 (function initContact() {
   const openBtn = document.getElementById('contact-open');
@@ -319,6 +360,13 @@ function isTechItem(item) {
   });
 })();
 
+// Print digest only
+(function initPrintDigest() {
+  const btn = document.getElementById('digest-print');
+  if (!btn) return;
+  btn.addEventListener('click', () => window.print());
+})();
+
 // Mobile collapse for TL;DR list
 (function initTldrCollapse() {
   const list = document.getElementById('tldr-list');
@@ -344,6 +392,8 @@ function isTechItem(item) {
         }
       };
     } else {
+  // Open from secondary button
+  document.getElementById('contact-open-2')?.addEventListener('click', () => open());
       list.classList.remove('collapse-on-mobile');
       btn.hidden = true;
     }

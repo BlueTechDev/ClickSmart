@@ -17,6 +17,8 @@
         </button>
         <h1 class="title">Top 5 Tech News</h1>
         <a class="back-btn" href="Tech_News.html" title="Back to Safety Hub">← Back to Hub</a>
+        <button id="font-dec" class="back-btn" aria-label="Decrease text size" title="Decrease text size">A−</button>
+        <button id="font-inc" class="back-btn" aria-label="Increase text size" title="Increase text size">A+</button>
         <button id="theme-toggle" class="back-btn" aria-label="Toggle color theme" title="Toggle color theme">🌙 Dark</button>
         <button id="contact-open" class="back-btn" aria-label="Contact" title="Ask a Question">Contact</button>
       </div>
@@ -36,6 +38,20 @@
           <button id="refresh" class="btn">Refresh</button>
           <span id="last-run" class="muted"></span>
         </div>
+      </section>
+
+      <section aria-labelledby="digest-title" class="digest">
+        <h2 id="digest-title">Weekly TL;DR Digest</h2>
+        <ul id="digest-top3" class="digest-list"></ul>
+        <div class="digest-do"><strong>Do this now:</strong> <span id="digest-action">Update your device: iPhone — Settings → General → Software Update; Windows — Start → Settings → Windows Update.</span></div>
+        <div class="digest-links"><strong>Learn more:</strong> <span id="digest-links"></span></div>
+        <div class="digest-meta">
+          <span class="muted">Text too small? Tap A+.</span>
+          <span class="muted">Last updated: <span id="digest-date"></span></span>
+          <button id="digest-print" class="btn sm" title="Print summary">Print summary</button>
+          <button id="contact-open-2" class="btn sm" title="Get help">Get Help</button>
+        </div>
+        <p class="muted">Need help? Click ‘Get Help’ — we’ll reply by email, no judgment.</p>
       </section>
 
       <section aria-labelledby="list-title">
