@@ -17,14 +17,14 @@
         <button id="menu-btn" class="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="site-menu">
           <span></span><span></span><span></span>
         </button>
-        <<div id="site-menu" class="links">
+        <div id="site-menu" class="links">
           <a class="tab" href="#start-here">Start Here</a>
           <a class="tab" href="#fix">Fix a Problem</a>
           <a class="tab" href="#watch-out">Watch Out</a>
           <a class="tab" href="#glossary">Glossary</a>
           <a class="tab" href="tldr.html">Tech News (TL;DR)</a>
           <a class="tab" href="videos.html">How‑To Videos</a>
-        </div>>
+        </div>
         <div class="ml-auto controls">
           <button id="font-dec" class="tab" aria-label="Decrease text size" title="Decrease text size">A−</button>
           <button id="font-inc" class="tab" aria-label="Increase text size" title="Increase text size">A+</button>
@@ -161,19 +161,120 @@
                 <button role="tab" aria-selected="false" class="tab-btn" data-tab="ios">iPhone</button>
                 <button role="tab" aria-selected="false" class="tab-btn" data-tab="android">Android</button>
               </div>
-              <div role="tabpanel" class="tab-panel" data-panel="win"><p>Steps coming soon.</p></div>
-              <div role="tabpanel" class="tab-panel hidden" data-panel="mac"><p>Steps coming soon.</p></div>
-              <div role="tabpanel" class="tab-panel hidden" data-panel="ios"><p>Steps coming soon.</p></div>
-              <div role="tabpanel" class="tab-panel hidden" data-panel="android"><p>Steps coming soon.</p></div>
+              <div role="tabpanel" class="tab-panel" data-panel="win">
+                <ol>
+                  <li>Start → Settings → Network & Internet → Wi‑Fi → turn On.</li>
+                  <li>Click “Show available networks”, choose your Wi‑Fi, select <em>Connect</em>, enter the password.</li>
+                  <li>If it fails: select the network → <em>Forget</em>, then connect again.</li>
+                  <li>Airplane mode off; toggle Wi‑Fi Off/On; restart your PC and router.</li>
+                  <li>Still no luck: Settings → Network & Internet → Advanced network settings → Network reset.</li>
+                </ol>
+              </div>
+              <div role="tabpanel" class="tab-panel hidden" data-panel="mac">
+                <ol>
+                  <li>Apple menu → System Settings → Wi‑Fi → turn On.</li>
+                  <li>Select your network, enter password, and check “Auto‑Join”.</li>
+                  <li>If it fails: System Settings → Wi‑Fi → Details next to your network → <em>Forget This Network</em>, then reconnect.</li>
+                  <li>Turn Wi‑Fi Off/On from the menu bar; restart Mac and router.</li>
+                  <li>Advanced: System Settings → Network → Wi‑Fi → Details → TCP/IP → <em>Renew DHCP Lease</em>.</li>
+                </ol>
+              </div>
+              <div role="tabpanel" class="tab-panel hidden" data-panel="ios">
+                <ol>
+                  <li>Settings → Wi‑Fi → turn On; tap your network; enter password.</li>
+                  <li>Toggle Airplane Mode On/Off; then try connecting again.</li>
+                  <li>If it fails: Settings → Wi‑Fi → tap the ⓘ next to the network → <em>Forget This Network</em> → reconnect.</li>
+                  <li>Low power? Charge or exit Low Power Mode; restart iPhone.</li>
+                  <li>Still failing: Settings → General → Transfer or Reset → Reset → <em>Reset Network Settings</em>.</li>
+                </ol>
+              </div>
+              <div role="tabpanel" class="tab-panel hidden" data-panel="android">
+                <ol>
+                  <li>Settings → Network & internet (or Connections) → Internet/Wi‑Fi → turn On.</li>
+                  <li>Tap your network, enter password, and connect.</li>
+                  <li>If it fails: long‑press the network → <em>Forget</em> → reconnect.</li>
+                  <li>Toggle Airplane Mode Off/On; restart phone and router.</li>
+                  <li>Still failing: Settings → System → Reset options → <em>Reset Wi‑Fi, mobile & Bluetooth</em>.</li>
+                </ol>
+              </div>
             </div>
           </article>
 
-          <article class="card guide"><h3>Can’t Log In</h3><p class="meta">Steps coming soon.</p></article>
-          <article class="card guide"><h3>Printer Not Working</h3><p class="meta">Steps coming soon.</p></article>
-          <article class="card guide"><h3>Free Up Storage</h3><p class="meta">Steps coming soon.</p></article>
-          <article class="card guide"><h3>Clear Browser Cache</h3><p class="meta">Steps coming soon.</p></article>
-          <article class="card guide"><h3>Update Your Phone</h3><p class="meta">Steps coming soon.</p></article>
-          <article class="card guide"><h3>App Keeps Crashing</h3><p class="meta">Steps coming soon.</p></article>
+          <article class="card guide">
+            <h3>Can’t Log In</h3>
+            <p class="meta">Recover access safely and lock down your account.</p>
+            <ol>
+              <li>Verify the site/app address is correct; avoid links in emails. Open the site directly.</li>
+              <li>Check Caps Lock/keyboard layout; try your password manager’s saved entry.</li>
+              <li>Click <em>Forgot password</em>; use email/SMS or recovery app to reset. Create a strong, unique password.</li>
+              <li>Have 2FA? Use your authenticator app or backup codes; avoid approving unexpected push prompts.</li>
+              <li>After access: review recent activity, sign out other sessions, and update recovery email/phone.</li>
+            </ol>
+          </article>
+
+          <article class="card guide">
+            <h3>Printer Not Working</h3>
+            <p class="meta">Fix connection, queue, and driver issues quickly.</p>
+            <ol>
+              <li>Power: printer on, paper loaded, no jams; check Wi‑Fi or USB cable.</li>
+              <li>Restart printer and computer; make sure both are on the same network.</li>
+              <li>Windows: Settings → Bluetooth & devices → Printers & scanners → select printer → <em>Run troubleshooter</em>.</li>
+              <li>macOS: System Settings → Printers & Scanners → select printer → <em>Open Print Queue</em> → clear paused jobs; remove and re‑add if needed.</li>
+              <li>Update or reinstall the printer driver/app from the manufacturer’s website.</li>
+            </ol>
+          </article>
+
+          <article class="card guide">
+            <h3>Free Up Storage</h3>
+            <p class="meta">Clear space safely without losing important files.</p>
+            <ul>
+              <li>Empty Recycle Bin/Trash; delete large Downloads and duplicate files.</li>
+              <li>Uninstall unused apps. On phones, offload rarely used apps.</li>
+              <li>Move photos/videos to cloud (iCloud/Google Photos/OneDrive) or external drive.</li>
+              <li>Windows: Settings → System → Storage → <em>Storage Sense</em> (enable).</li>
+              <li>macOS: About This Mac → More Info → Storage → <em>Manage</em> (Recommendations).</li>
+            </ul>
+          </article>
+
+          <article class="card guide">
+            <h3>Clear Browser Cache</h3>
+            <p class="meta">Fix odd website behavior and sign‑in loops.</p>
+            <details>
+              <summary><strong>Chrome / Edge</strong></summary>
+              Settings → Privacy & Security → Clear browsing data → Time range: <em>All time</em> → check <em>Cached images and files</em> (keep passwords if you prefer) → Clear.
+            </details>
+            <details>
+              <summary><strong>Safari (Mac/iPhone)</strong></summary>
+              Mac: Safari → Preferences → Advanced → enable Develop menu → Develop → Empty Caches. iPhone: Settings → Safari → Clear History and Website Data.
+            </details>
+            <details>
+              <summary><strong>Firefox</strong></summary>
+              Settings → Privacy & Security → Cookies and Site Data → Clear Data → <em>Cached Web Content</em>.
+            </details>
+          </article>
+
+          <article class="card guide">
+            <h3>Update Your Phone</h3>
+            <p class="meta">Install the latest security and stability fixes.</p>
+            <ul>
+              <li>iPhone: Settings → General → Software Update → <em>Download and Install</em>.</li>
+              <li>Android: Settings → System → System update → <em>Check for update</em>.</li>
+              <li>Update apps: App Store/Play Store → tap profile → Update All.</li>
+              <li>Charge to at least 50% and connect to Wi‑Fi before updating.</li>
+            </ul>
+          </article>
+
+          <article class="card guide">
+            <h3>App Keeps Crashing</h3>
+            <p class="meta">Stabilize the app in a few quick steps.</p>
+            <ol>
+              <li>Update the app from the App Store/Play Store; update your OS.</li>
+              <li>Force close the app; restart your device.</li>
+              <li>Free up storage; apps crash when space is low.</li>
+              <li>iPhone: Settings → General → iPhone Storage → select app → <em>Offload App</em>, then reinstall.</li>
+              <li>Android: Settings → Apps → [App] → Storage & cache → <em>Clear cache</em> (and if needed, <em>Clear storage</em>), then reinstall.</li>
+            </ol>
+          </article>
         </div>
       </section>
 
