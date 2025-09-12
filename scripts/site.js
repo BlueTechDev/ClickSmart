@@ -139,6 +139,7 @@
   function close() { modal.hidden = true; }
 
   openBtn.addEventListener('click', open);
+  document.getElementById('contact-open-hero')?.addEventListener('click', open);
   modal.addEventListener('click', (e) => { if (e.target.closest('[data-close]')) close(); });
   window.addEventListener('keydown', (e) => { if (!modal.hidden && e.key === 'Escape') close(); });
 
@@ -172,6 +173,22 @@
     } finally {
       submitBtn.disabled = false;
     }
+  });
+})();
+
+// Tabs (device guides)
+(function initTabs() {
+  document.querySelectorAll('[data-tabs]').forEach(root => {
+    const tabs = root.querySelectorAll('[role="tab"]');
+    const panels = root.querySelectorAll('[role="tabpanel"]');
+    function activate(id) {
+      tabs.forEach(t => t.setAttribute('aria-selected', t.getAttribute('data-tab') === id ? 'true' : 'false'));
+      panels.forEach(p => p.classList.toggle('hidden', p.getAttribute('data-panel') !== id));
+    }
+    tabs.forEach(t => t.addEventListener('click', () => activate(t.getAttribute('data-tab'))));
+    // initialize first
+    const first = tabs[0]?.getAttribute('data-tab');
+    if (first) activate(first);
   });
 })();
 

@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <title>How‑To Videos — Click Smart</title>
+    <meta name="description" content="Short, clear how‑to videos labeled by device." />
+    <link rel="stylesheet" href="styles/site.css" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+  </head>
+  <body>
+    <a href="#main" class="skip-link">Skip to content</a>
+    <nav class="nav" aria-label="Top">
+      <div class="inner">
+        <a class="tab" href="Tech_News.html">← Home</a>
+        <div class="ml-auto controls">
+          <button id="font-dec" class="tab" aria-label="Decrease text size" title="Decrease text size">A−</button>
+          <button id="font-inc" class="tab" aria-label="Increase text size" title="Increase text size">A+</button>
+          <button id="theme-toggle" class="tab" aria-label="Toggle color theme" title="Toggle color theme">🌙 Dark</button>
+          <button id="contact-open" class="tab" aria-label="Contact" title="Ask a Question">Contact</button>
+        </div>
+      </div>
+    </nav>
+    <main id="main" class="container">
+      <header class="hero" aria-label="How‑To Videos">
+        <h1>How‑To Videos</h1>
+        <p>60–90 seconds. Labeled by device. Clear and calm.</p>
+      </header>
+
+      <div class="video-grid">
+        <div class="video-card" data-title="Fix a Slow Computer">
+          <iframe class="video-frame" title="Fix a Slow Computer" src="https://www.youtube.com/embed/E8384jrr-uI" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+          <div class="video-body">
+            <h3 class="video-title">Fix a Slow Computer</h3>
+            <p class="meta">Device: Computer • Runtime: ~1:10</p>
+          </div>
+        </div>
+        <div class="video-card" data-title="Connect to Wi‑Fi (Computer)">
+          <iframe class="video-frame" title="Connect to Wi‑Fi (Computer)" src="https://www.youtube.com/embed/ScGFA7Ix6QY" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+          <div class="video-body">
+            <h3 class="video-title">Connect to Wi‑Fi (Computer)</h3>
+            <p class="meta">Device: Computer • Runtime: ~1:05</p>
+          </div>
+        </div>
+        <div class="video-card" data-title="Clear Browser Cache">
+          <iframe class="video-frame" title="Clear Browser Cache" src="https://www.youtube.com/embed/7-ZXC8DZHhY" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+          <div class="video-body">
+            <h3 class="video-title">Clear Browser Cache</h3>
+            <p class="meta">Device: Computer • Runtime: ~1:20</p>
+          </div>
+        </div>
+        <div class="video-card" data-title="Free Up Phone Storage">
+          <iframe class="video-frame" title="Free Up Phone Storage" src="https://www.youtube.com/embed/472RJ9C-1m0" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+          <div class="video-body">
+            <h3 class="video-title">Free Up Phone Storage</h3>
+            <p class="meta">Device: Phone • Runtime: ~1:18</p>
+          </div>
+        </div>
+        <div class="video-card" data-title="Reduce Phone Battery Drain">
+          <iframe class="video-frame" title="Reduce Phone Battery Drain" src="https://www.youtube.com/embed/3Yx3bly2rB0" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+          <div class="video-body">
+            <h3 class="video-title">Reduce Phone Battery Drain</h3>
+            <p class="meta">Device: Phone • Runtime: ~1:15</p>
+          </div>
+        </div>
+        <div class="video-card" data-title="Update Your Phone OS">
+          <iframe class="video-frame" title="Update Your Phone OS" src="https://www.youtube.com/embed/EmUStSMuo5w" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+          <div class="video-body">
+            <h3 class="video-title">Update Your Phone OS</h3>
+            <p class="meta">Device: Phone • Runtime: ~1:12</p>
+          </div>
+        </div>
+      </div>
+
+      <p class="small mt-10">Prefer text? Open the Fix a Problem guides on the Home page.</p>
+
+      <footer aria-label="Footer" class="global-footer">
+        <div class="small">Text too small? Tap A+. Last updated: <span id="last-updated">—</span></div>
+      </footer>
+    </main>
+
+    <!-- Contact Modal (reuse) -->
+    <div id="contact-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="contact-title" hidden>
+      <div class="modal-backdrop" data-close></div>
+      <div class="modal-content" role="document">
+        <button class="modal-close" aria-label="Close" data-close>×</button>
+        <h2 id="contact-title">Ask a Question</h2>
+        <form id="contact-form" novalidate>
+          <label class="form-label" for="cf-name">Your Name</label>
+          <input id="cf-name" name="name" class="form-input" type="text" inputmode="text" autocomplete="name" maxlength="80" required>
+
+          <label class="form-label" for="cf-msg">Your Question</label>
+          <textarea id="cf-msg" name="message" class="form-textarea" rows="6" maxlength="2000" required></textarea>
+
+          <div class="form-actions">
+            <button id="cf-submit" class="btn" type="submit">Send</button>
+            <button class="btn" type="button" data-close>Cancel</button>
+          </div>
+          <p id="cf-status" class="small" aria-live="polite"></p>
+        </form>
+      </div>
+    </div>
+
+    <script src="scripts/site.js"></script>
+  </body>
+  </html>
+

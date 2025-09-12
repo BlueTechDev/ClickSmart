@@ -94,6 +94,9 @@ a:hover { text-decoration: underline; }
 .hero { padding: 28px 0 10px; }
 .hero h1 { margin: 0 0 8px; font-size: clamp(28px, 4.5vw, 40px); letter-spacing: 0.2px; }
 .hero p { margin: 0; color: var(--muted); }
+.home-cta { margin-top: 12px; display: grid; gap: 10px; }
+.btn.primary.big { font-size: 18px; text-align: center; padding: 12px; }
+.secondary-links a { color: var(--accent); }
 
 .nav {
   position: sticky; top: 0; z-index: 10;
@@ -213,6 +216,14 @@ footer { color: var(--muted); border-top: 1px solid var(--border); margin-top: 2
   -webkit-overflow-scrolling: touch;
   padding: 2px; /* breathing room for focus outline */
 }
+
+/* Guide tabs */
+.tabs { margin-top: 8px; }
+.tablist { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 8px; }
+.tab-btn { background: var(--panel); border: 1px solid var(--border); border-radius: 8px; padding: 6px 10px; cursor: pointer; }
+.tab-btn[aria-selected="true"] { border-color: var(--accent); box-shadow: 0 0 0 2px color-mix(in oklab, var(--accent) 25%, transparent); }
+.tab-panel { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 10px; }
+.tab-panel.hidden { display: none; }
 .carousel-card {
   flex: 0 0 100%;
   scroll-snap-align: start;
