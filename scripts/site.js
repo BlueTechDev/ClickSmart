@@ -227,3 +227,69 @@
   apply();
   window.addEventListener('resize', () => { apply(); });
 })();
+
+// Guide search filter
+(function initGuideSearch() {
+  const input = document.getElementById('guide-search');
+  const section = document.getElementById('fix');
+  if (!input || !section) return;
+  const guides = Array.from(section.querySelectorAll('.guide'));
+  function applyFilter() {
+    const q = input.value.trim().toLowerCase();
+    guides.forEach(card => {
+      const text = card.innerText.toLowerCase();
+      const show = !q || text.includes(q);
+      card.style.display = show ? '' : 'none';
+    });
+  }
+  input.addEventListener('input', applyFilter);
+})();
+
+// Copy steps / Print handlers
+(function initCopyPrint() {
+  document.addEventListener('click', async (e) => {
+    const printBtn = e.target.closest('[data-print]');
+    if (printBtn) {
+      const sel = printBtn.getAttribute('data-print');
+      const target = sel ? document.querySelector(sel) : printBtn.closest('.guide');
+      if (!target) return;
+      const w = window.open('', '_blank');
+      if (!w) return;
+      const styles = Array.from(document.querySelectorAll('link[rel="stylesheet"]')).map(l => `<link rel="stylesheet" href="${l.getAttribute('href')}">`).join('');
+      w.document.write(`<!doctype html><html><head><meta charset="utf-8">${styles}<title>Print</title></head><body>${target.outerHTML}</body></html>`);
+      w.document.close();
+      w.focus();
+      w.print();
+      return;
+    }
+    const copyBtn = e.target.closest('[data-copy-steps]');
+    if (copyBtn) {
+      const card = copyBtn.closest('.guide') || copyBtn.closest('[id]');
+      if (!card) return;
+      let lines = [];
+      // If tabs present, use the visible panel
+      const activePanel = card.querySelector('.tab-panel:not(.hidden)');
+      const scope = activePanel || card;
+      scope.querySelectorAll('ol > li, ul > li').forEach(li => lines.push('- ' + li.textContent.trim()));
+      // Include details summaries if present
+      scope.querySelectorAll('details').forEach(d => {
+        const sum = d.querySelector('summary');
+        if (sum) lines.push(sum.textContent.trim() + ':');
+        const p = d.textContent.replace(sum?.textContent || '', '').trim();
+        if (p) lines.push('  ' + p);
+      });
+      const text = lines.join('\n');
+      try {
+        await navigator.clipboard.writeText(text);
+        copyBtn.textContent = 'Copied!';
+        setTimeout(() => (copyBtn.textContent = 'Copy steps'), 1200);
+      } catch (_) {
+        const ta = document.createElement('textarea');
+        ta.value = text; document.body.appendChild(ta); ta.select();
+        try { document.execCommand('copy'); copyBtn.textContent = 'Copied!'; } catch {}
+        document.body.removeChild(ta);
+        setTimeout(() => (copyBtn.textContent = 'Copy steps'), 1200);
+      }
+    }
+  });
+})();
