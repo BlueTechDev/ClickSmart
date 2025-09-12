@@ -53,16 +53,34 @@ const FEEDS = [
   { name: 'TechCrunch', home: 'https://techcrunch.com/', rss: 'https://techcrunch.com/feed/' }
 ];
 
-// Only keep items that match these topics
-const KEYWORDS = [
+// Strict tech topics to include (match if any is present)
+const STRICT_TECH_KEYWORDS = [
   // Security / breaches
-  'breach','data breach','data leak','leak','compromis','hack','hacked','ransomware','malware','phishing','vulnerability','vulnerabilities','cve','zero-day','exploit','exploited','patch','patch tuesday','security','bug fix','mitigation',
-  // Tips & tricks
-  'tip','tips','trick','tricks','how to','guide','best practices','protect','secure your','mfa','2fa','password',
-  // AI updates
-  'ai','artificial intelligence','machine learning','ml ','llm','gpt','chatgpt','gemini','claude','openai','anthropic','deepmind',
-  // Things to watch for
-  'scam','fraud','warning','watch out','alert','phishing'
+  'breach','data breach','data leak','leak','compromis','hack','hacked','ransomware','malware','phishing','vulnerability','vulnerabilities','cve','zero-day','zero day','exploit','exploited','patch','patch tuesday','security','bug fix','mitigation',
+  // AI / ML
+  'ai','artificial intelligence','machine learning','ml ','llm','gpt','chatgpt','gemini','claude','openai','anthropic','deepmind','lora','agents','rnn','transformer',
+  // Consumer/computing
+  'windows','macos','ios','android','linux','ubuntu','debian','red hat','chrome','safari','edge','firefox','browser','update','feature','bug','fix',
+  // Devices / connectivity
+  'iphone','ipad','macbook','pixel','galaxy','router','wifi','wi-fi','bluetooth','usb','ssd','gpu','cpu','nvidia','amd','intel',
+  // Cloud/dev/tools
+  'cloud','saas','aws','azure','gcp','kubernetes','docker','devops','github','gitlab','vscode','visual studio',
+  // Productivity / tips
+  'tip','tips','trick','tricks','how to','how‑to','guide','best practices','shortcut','protect','secure your','mfa','2fa','password','password manager',
+  // Scams / safety
+  'scam','fraud','warning','watch out','alert','privacy','encryption'
+];
+
+// Non-tech topics to exclude (if present, we filter out)
+const EXCLUDE_KEYWORDS = [
+  // Politics & government
+  'election','senate','congress','parliament','white house','prime minister','president','campaign','democrat','republican','labour','tory','minister','governor','mayor','ballot','vote','voted','voting','policy','politic','political',
+  // Sports
+  'nfl','nba','mlb','nhl','soccer','football','baseball','basketball','tennis','golf','olympic',
+  // Entertainment/celebs
+  'celebrity','celeb','music','movie','film','box office','award','oscars','grammys','emmys',
+  // General finance (still allow if paired with strict tech terms)
+  'stock','market','earnings','ipo'
 ];
 
 async function fetchWithFallback(url) {
@@ -82,8 +100,9 @@ function parseRSS(text, sourceName) {
       const link = item.querySelector('link')?.textContent?.trim();
       const pubDate = item.querySelector('pubDate')?.textContent || item.querySelector('updated')?.textContent || '';
       const desc = item.querySelector('description')?.textContent || item.querySelector('content\\:encoded')?.textContent || '';
+      const cats = Array.from(item.querySelectorAll('category')).map(c => c.textContent || '').join(' ');
       if (title && link) {
-        items.push({ title, link, date: new Date(pubDate), source: sourceName, description: sanitize(desc) });
+        items.push({ title, link, date: new Date(pubDate), source: sourceName, description: sanitize(desc), categories: cats });
       }
     });
     // Atom
@@ -93,8 +112,9 @@ function parseRSS(text, sourceName) {
         const link = entry.querySelector('link')?.getAttribute('href');
         const pubDate = entry.querySelector('updated')?.textContent || entry.querySelector('published')?.textContent || '';
         const desc = entry.querySelector('summary')?.textContent || entry.querySelector('content')?.textContent || '';
+        const cats = Array.from(entry.querySelectorAll('category')).map(c => c.getAttribute('term') || c.textContent || '').join(' ');
         if (title && link) {
-          items.push({ title, link, date: new Date(pubDate), source: sourceName, description: sanitize(desc) });
+          items.push({ title, link, date: new Date(pubDate), source: sourceName, description: sanitize(desc), categories: cats });
         }
       });
     }
@@ -122,7 +142,7 @@ function summarize(text, max = 260) {
   return clean.slice(0, max - 1).replace(/[,;:\s]+\S*$/, '') + '…';
 }
 
-const CACHE_KEY = 'tldr-cache-v1';
+const CACHE_KEY = 'tldr-cache-v2';
 const CACHE_TTL_MS = 45 * 60 * 1000; // 45 minutes
 
 async function loadTopFive() {
@@ -156,7 +176,7 @@ async function loadTopFive() {
 
   // Sort by date desc and take top 5
   const top = all
-    .filter(i => i && i.title && i.link && matchesKeywords(i))
+    .filter(i => i && i.title && i.link && isTechItem(i))
     .sort((a, b) => (b.date?.getTime?.() || 0) - (a.date?.getTime?.() || 0))
     .slice(0, 5);
 
@@ -249,9 +269,13 @@ document.getElementById('tldr-list')?.addEventListener('click', async (e) => {
   }
 });
 
-function matchesKeywords(item) {
-  const hay = `${item.title || ''} ${item.description || ''}`.toLowerCase();
-  return KEYWORDS.some(k => hay.includes(k));
+function isTechItem(item) {
+  const hay = `${item.title || ''} ${item.description || ''} ${item.categories || ''}`.toLowerCase();
+  const hasTech = STRICT_TECH_KEYWORDS.some(k => hay.includes(k));
+  if (!hasTech) return false;
+  const hasExcluded = EXCLUDE_KEYWORDS.some(k => hay.includes(k));
+  // Allow if it contains strict tech AND no excluded topic
+  return !hasExcluded;
 }
 
 // Contact modal + submit
