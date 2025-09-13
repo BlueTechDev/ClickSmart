@@ -228,6 +228,20 @@
   window.addEventListener('resize', () => { apply(); });
 })();
 
+// One-at-a-time accordions for main sections
+(function initAccordions() {
+  const groups = Array.from(document.querySelectorAll('main section.accordion > details'));
+  if (!groups.length) return;
+  groups.forEach(d => {
+    d.addEventListener('toggle', () => {
+      if (!d.open) return;
+      groups.forEach(other => { if (other !== d && other.open) other.open = false; });
+      // Ensure focus remains visible on newly opened summary
+      d.querySelector('summary')?.focus?.();
+    });
+  });
+})();
+
 // Guide search filter
 (function initGuideSearch() {
   const input = document.getElementById('guide-search');

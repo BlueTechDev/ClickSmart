@@ -22,8 +22,6 @@
           <a class="tab" href="#fix">Fix a Problem</a>
           <a class="tab" href="#watch-out">Watch Out</a>
           <a class="tab" href="#glossary">Glossary</a>
-          <a class="tab" href="tldr.html">Tech News (TL;DR)</a>
-          <a class="tab" href="videos.html">How‑To Videos</a>
         </div>
         <div class="ml-auto controls">
           <button id="font-dec" class="tab" aria-label="Decrease text size" title="Decrease text size">A−</button>
@@ -43,9 +41,7 @@
           <a class="btn" href="#watch-out">Watch Out (Scams & Safety)</a>
           <a class="btn" href="#panic">⚠️ I clicked something suspicious</a>
           <button id="contact-open-hero" class="btn" type="button">Get Help</button>
-          <div class="secondary-links small">
-            <a href="tldr.html">Tech News (TL;DR)</a> • <a href="videos.html">How‑To Videos</a> • <a href="#glossary">Glossary</a>
-          </div>
+          
         </div>
       </header>
     </div>
@@ -63,8 +59,10 @@
         </ol>
       </section>
       
-      <section id="start-here" aria-labelledby="start-here-title" data-collapse>
-        <!--<h2 id="start-here-title">Start Here: The Basics</h2>>-->
+      <section id="start-here" class="accordion" aria-labelledby="start-here-title" data-collapse>
+        <details open>
+          <summary id="start-here-title">Start Here: The Basics</summary>
+          <div class="section-body">
         <p class="lead">New to tech? Start with these essentials. Each takes minutes and boosts your safety a lot.</p>
         <div class="grid">
           <article class="card">
@@ -97,11 +95,15 @@
           <button class="btn show-more" data-collapse-toggle>Show all</button>
         </div>
         <div class="callout mt-10">If something feels off: stop, close the tab/app, and ask a trusted person or IT support before proceeding.</div>
+          </div>
+        </details>
       </section>
       
 
-      <section id="fix" aria-labelledby="fix-title">
-        <h2 id="fix-title">Fix a Problem</h2>
+      <section id="fix" class="accordion" aria-labelledby="fix-title">
+        <details>
+          <summary id="fix-title">Fix a Problem</summary>
+          <div class="section-body">
         <p class="lead">Pick an issue. Then choose your device and follow 3–5 steps.</p>
         <div class="search-row" style="margin:8px 0 14px;">
           <label for="guide-search" class="sr-only">Search guides</label>
@@ -303,10 +305,14 @@
             <div class="form-actions"><button class="btn sm" data-copy-steps>Copy steps</button><button class="btn sm" data-print="#guide-app-crash">Print</button></div>
           </article>
         </div>
+          </div>
+        </details>
       </section>
 
-      <section id="watch-out" aria-labelledby="watch-out-title" data-collapse>
-        <h2 id="watch-out-title">⚠️ Things to Watch Out For</h2>
+      <section id="watch-out" class="accordion" aria-labelledby="watch-out-title" data-collapse>
+        <details>
+          <summary id="watch-out-title">⚠️ Things to Watch Out For</summary>
+          <div class="section-body">
         <p class="lead">Recognize common scams and risky patterns. When in doubt, pause and verify via official channels.</p>
 
         <div class="grid">
@@ -359,12 +365,16 @@
         <div class="section-actions">
           <button class="btn show-more" data-collapse-toggle>Show all</button>
         </div>
+          </div>
+        </details>
       </section>
 
       
 
-      <section id="glossary" aria-labelledby="glossary-title">
-        <h2 id="glossary-title">Plain‑Language Glossary</h2>
+      <section id="glossary" class="accordion" aria-labelledby="glossary-title">
+        <details>
+          <summary id="glossary-title">Plain‑Language Glossary</summary>
+          <div class="section-body">
         <details>
           <summary><strong>Two‑Factor Authentication (2FA)</strong></summary>
           Adds a second step to login (like a code on your phone) to protect your account even if a password leaks.
@@ -401,11 +411,12 @@
           <summary><strong>Cookies</strong></summary>
           Small files a website saves in your browser to keep you logged in or remember settings. Can also be used for tracking.
         </details>
+          </div>
+        </details>
       </section>
 
       <footer aria-label="Footer" class="global-footer">
         <div>Created by Jona Krolll © 2025. My mission: to keep you and your families safe.</div>
-        <div class="small">Text too small? Tap A+. Last updated: <span id="last-updated">—</span></div>
       </footer>
     </main>
 

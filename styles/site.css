@@ -38,8 +38,8 @@ html[data-theme="dark"] {
   --bg-grad: linear-gradient(180deg, var(--p0) 0%, color-mix(in oklab, var(--p1) 35%, #000 65%) 70%);
   --panel: color-mix(in oklab, var(--p0) 85%, #ffffff 15%);
   --card: color-mix(in oklab, var(--p0) 82%, #ffffff 18%);
-  --text: #e7ebf3;
-  --muted: #a9b6c8;
+  --text: #f8fafc; /* brighter for readability */
+  --muted: #d1d7e0; /* lighter muted text for contrast */
   --accent: var(--p1);
   --good: #22c55e;
   --warn: #f59e0b;
@@ -53,14 +53,32 @@ html[data-theme="dark"] {
     --bg-grad: linear-gradient(180deg, var(--p0) 0%, color-mix(in oklab, var(--p1) 35%, #000 65%) 70%);
     --panel: color-mix(in oklab, var(--p0) 85%, #ffffff 15%);
     --card: color-mix(in oklab, var(--p0) 82%, #ffffff 18%);
-    --text: #e7ebf3;
-    --muted: #a9b6c8;
+    --text: #f8fafc;
+    --muted: #d1d7e0;
     --accent: var(--p1);
     --good: #22c55e;
     --warn: #f59e0b;
     --bad: #ef4444;
     --border: color-mix(in oklab, var(--p0) 70%, #ffffff 30%);
   }
+
+/* Accordion presentation for main sections */
+.accordion { margin-top: 16px; }
+.accordion details {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 6px 8px;
+}
+.accordion summary {
+  cursor: pointer;
+  font-weight: 700;
+  list-style: none;
+  font-size: clamp(18px, 3.2vw, 22px);
+  padding: 6px 4px;
+}
+.accordion summary::-webkit-details-marker { display: none; }
+.accordion .section-body { padding: 6px 2px 6px; }
 }
 
 /* Base layout */
