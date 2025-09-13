@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 120" role="img" aria-label="Click Smart">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#3581B8"/>
+      <stop offset="100%" stop-color="#7FA3CC"/>
+    </linearGradient>
+  </defs>
+  <!-- Simple shield mark -->
+  <g transform="translate(8,18)">
+    <path d="M44 0l34 12v34c0 20-14 36-34 44C24 82 10 66 10 46V12L44 0z" fill="url(#g)"/>
+    <circle cx="34" cy="30" r="4" fill="#fff"/>
+    <rect x="26" y="36" width="20" height="8" rx="4" fill="#fff"/>
+    <path d="M28 52l18 18-6-1-2 8-8-24z" fill="#fff"/>
+  </g>
+  <!-- Wordmark -->
+  <text x="120" y="72" font-family="system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Arial" font-size="56" font-weight="700" fill="#0f172a">Click</text>
+  <text x="280" y="72" font-family="system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Arial" font-size="56" font-weight="700" fill="#0f172a">Smart</text>
+</svg>
+
