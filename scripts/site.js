@@ -308,11 +308,18 @@
   });
 })();
 
-// Register service worker for PWA
-(function registerSW(){
+// (PWA disabled for now)
+// Clean up any legacy service worker to avoid caching issues
+(function cleanupLegacySW(){
   if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-      navigator.serviceWorker.register('/sw.js').catch(() => {});
-    });
+    try {
+      navigator.serviceWorker.getRegistrations().then((regs) => {
+        regs.forEach((r) => {
+          if (r.active && r.active.scriptURL && r.active.scriptURL.includes('/sw.js')) {
+            r.unregister();
+          }
+        });
+      });
+    } catch (_) {}
   }
 })();
