@@ -1,7 +1,6 @@
-const CACHE = 'clicksmart-v1';
+const CACHE = 'clicksmart-v2';
 const ASSETS = [
   '/',
-  '/Tech_News',
   '/Tech_News.html',
   '/styles/site.css',
   '/scripts/site.js',

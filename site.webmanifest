@@ -1,7 +1,7 @@
 {
   "name": "Click Smart",
   "short_name": "Click Smart",
-  "start_url": "/Tech_News",
+  "start_url": "/Tech_News.html",
   "scope": "/",
   "display": "standalone",
   "background_color": "#F3F8F2",
