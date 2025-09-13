@@ -48,15 +48,20 @@
 
     <main id="main" class="container" tabindex="-1">
       <section id="panic" aria-labelledby="panic-title" class="callout" style="margin-bottom:16px;">
-        <h2 id="panic-title">Clicked something suspicious? Do this.</h2>
+        <h2 id="panic-title">Got a suspicious link or pop‑up?</h2>
         <ol>
-          <li>Stop. Close the tab/app. Don’t enter any info.</li>
-          <li>Disconnect Wi‑Fi if the page looked malicious.</li>
-          <li>Run your security scan (Defender, etc.).</li>
-          <li>Change the password for the affected account; turn on 2‑factor authentication.</li>
-          <li>Watch for new login alerts or password reset emails; report anything strange.</li>
-          <li>When contacting support, go to the official website directly—never the phone number in the pop‑up.</li>
+          <li><strong>Stop:</strong> close the tab/app. Don’t type or click anything else.</li>
+          <li><strong>Go direct:</strong> don’t call/reply to the message. Open the official site/app yourself.</li>
+          <li><strong>Check device:</strong> run your security scan, then restart.</li>
+          <li><strong>Protect accounts:</strong> change the password for any account involved and turn on 2‑factor authentication.</li>
+          <li><strong>If you entered info or paid:</strong> contact your bank/provider immediately and watch for alerts.</li>
         </ol>
+        <div class="form-actions">
+          <button class="btn sm" data-copy-steps>Copy steps</button>
+          <button class="btn sm" type="button" onclick="document.getElementById('contact-open').click()">Get Help</button>
+        </div>
+        <p class="small"><strong>Rule of thumb:</strong> If you didn’t expect it, don’t click.</p>
+        <p class="small">Scanner pick: <a href="https://www.malwarebytes.com/" target="_blank" rel="noopener noreferrer">Malwarebytes Free</a> (Windows/Mac).</p>
       </section>
       
       <section id="start-here" class="accordion" aria-labelledby="start-here-title" data-collapse>
@@ -112,7 +117,7 @@
 
         <div class="grid">
           <article class="card guide" id="guide-slow-computer">
-            <h3>Fix a Slow Computer</h3>
+            <h3>Fix a Slow Device</h3>
             <p class="meta"><strong>Do this now (10–30 sec):</strong> Restart your device. If it’s hot, let it cool for 5 minutes.</p>
             <div class="tabs" data-tabs>
               <div role="tablist" class="tablist" aria-label="Devices">
