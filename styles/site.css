@@ -1,9 +1,9 @@
 /* Unified palette across site */
 :root {
-  --p0: #000000;  /* black */
-  --p1: #4f76a4;  /* steel blue */
-  --p2: #7fa3cc;  /* light slate blue */
-  --p3: #ffe6d6;  /* soft peach */
+  --p0: #000000;  /* anchor for dark mix */
+  --p1: #3581B8;  /* steel blue (primary accent) */
+  --p2: #DEE2D6;  /* alabaster (neutral) */
+  --p3: #F3F8F2;  /* mint cream (light background) */
 
   /* Light theme defaults */
   --bg-grad: linear-gradient(180deg, var(--p3) 0%, var(--p2) 60%);
@@ -26,7 +26,7 @@ html[data-theme="light"] {
   --card: #ffffff;
   --text: #0f172a;
   --muted: #475569;
-  --accent: #2563eb;
+  --accent: var(--p1);
   --good: #16a34a;
   --warn: #d97706;
   --bad: #dc2626;
@@ -35,12 +35,12 @@ html[data-theme="light"] {
 
 /* Force dark */
 html[data-theme="dark"] {
-  --bg-grad: linear-gradient(180deg, var(--p0) 0%, color-mix(in oklab, var(--p1) 40%, #000 60%) 70%);
+  --bg-grad: linear-gradient(180deg, var(--p0) 0%, color-mix(in oklab, var(--p1) 35%, #000 65%) 70%);
   --panel: color-mix(in oklab, var(--p0) 85%, #ffffff 15%);
   --card: color-mix(in oklab, var(--p0) 82%, #ffffff 18%);
   --text: #e7ebf3;
   --muted: #a9b6c8;
-  --accent: var(--p2);
+  --accent: var(--p1);
   --good: #22c55e;
   --warn: #f59e0b;
   --bad: #ef4444;
@@ -50,12 +50,12 @@ html[data-theme="dark"] {
 /* Respect system preference when not explicitly set */
 @media (prefers-color-scheme: dark) {
   html:not([data-theme="light"]) {
-    --bg-grad: linear-gradient(180deg, var(--p0) 0%, color-mix(in oklab, var(--p1) 40%, #000 60%) 70%);
+    --bg-grad: linear-gradient(180deg, var(--p0) 0%, color-mix(in oklab, var(--p1) 35%, #000 65%) 70%);
     --panel: color-mix(in oklab, var(--p0) 85%, #ffffff 15%);
     --card: color-mix(in oklab, var(--p0) 82%, #ffffff 18%);
     --text: #e7ebf3;
     --muted: #a9b6c8;
-    --accent: var(--p2);
+    --accent: var(--p1);
     --good: #22c55e;
     --warn: #f59e0b;
     --bad: #ef4444;
