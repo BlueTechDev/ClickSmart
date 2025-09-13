@@ -8,6 +8,19 @@
     <meta name="description" content="A simple hub for staying safe online: tech news, troubleshooting tips, scams to watch for, and training videos." />
     <link rel="stylesheet" href="styles/site.css" />
     <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <script>
+      // If the welcome hasn't been acknowledged and the user didn't choose to skip, show onboarding first
+      (function(){
+        try {
+          const params = new URLSearchParams(location.search);
+          if (params.get('skip_welcome') === '1') return;
+          const ack = localStorage.getItem('cs_welcome_ack') === '1';
+          if (!ack) {
+            location.replace('onboarding.html?return=' + encodeURIComponent('Tech_News.html'));
+          }
+        } catch(_) {}
+      })();
+    </script>
   </head>
   <body>
     <a href="#main" class="skip-link">Skip to content</a>
