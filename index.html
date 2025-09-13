@@ -3,23 +3,11 @@
   <head>
     <meta charset="utf-8" />
     <title>Redirecting…</title>
+    <meta http-equiv="refresh" content="0; url=Tech_News.html" />
     <link rel="canonical" href="Tech_News.html" />
-    <meta name="referrer" content="strict-origin-when-cross-origin" />
-    <script>
-      (function(){
-        try {
-          const params = new URLSearchParams(location.search);
-          const skip = params.get('skip_welcome') === '1';
-          const ack = localStorage.getItem('cs_welcome_ack') === '1';
-          const dest = ack || skip ? 'Tech_News.html' : 'onboarding.html?return=Tech_News.html';
-          window.location.replace(dest);
-        } catch (_) {
-          window.location.replace('Tech_News.html');
-        }
-      })();
-    </script>
   </head>
   <body>
-    <p>Redirecting… If nothing happens, <a href="Tech_News.html">go to the site</a> or <a href="onboarding.html">read the welcome</a>.</p>
+    <p>If you are not redirected, <a href="Tech_News.html">click here</a>.</p>
+    <script>window.location.replace('Tech_News.html');</script>
   </body>
   </html>
