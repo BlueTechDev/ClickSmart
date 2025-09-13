@@ -1,6 +1,7 @@
 const CACHE = 'clicksmart-v1';
 const ASSETS = [
   '/',
+  '/Tech_News',
   '/Tech_News.html',
   '/styles/site.css',
   '/scripts/site.js',
@@ -46,4 +47,3 @@ self.addEventListener('fetch', (event) => {
     caches.match(req).then((hit) => hit || fetch(req))
   );
 });
-

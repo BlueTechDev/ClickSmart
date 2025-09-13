@@ -15,7 +15,6 @@
     }
   ],
   "redirects": [
-    { "source": "/", "destination": "/Tech_News.html", "statusCode": 307 },
-    { "source": "/Tech_News", "destination": "/Tech_News.html", "statusCode": 307 }
+    { "source": "/", "destination": "/Tech_News", "statusCode": 307 }
   ]
 }
